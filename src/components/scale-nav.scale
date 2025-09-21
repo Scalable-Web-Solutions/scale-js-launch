@@ -1,0 +1,34 @@
+<script>
+  let scrollY = 0;
+  let lastY = 0;
+  let navHidden = false;
+
+  export function onMount(){
+    this.$bindEvent(window, 'scroll', () => ({ scrollY: window.scrollY }), { raf: true });
+  }
+
+  export function afterUpdate(){
+    if (scrollY > lastY && !navHidden) {
+      navHidden = true;
+    } else if (scrollY < lastY && navHidden) {
+      navHidden = false;
+    }
+    lastY = scrollY;
+  }
+</script>
+
+<nav class={`fixed transition-transform duration-300 ${navHidden ? 'translate-y-[-200px]' : 'translate-y-0'} flex max-w-4xl justify-center w-full z-[50] top-10 text-white bg-black/30 backdrop-blur-lg p-6 rounded-xl ring-gray-900 ring-1`}>
+  <div class="flex justify-around gap-5">
+      <p>ScaleJS</p>
+      <span>-</span>
+      <div class="flex gap-5">
+          <a>Install</a>
+          <a>Docs</a>
+          <a>About</a>
+      </div>
+      <span>-</span>
+      <div>
+          <a>Scalable Web Solutions</a>
+      </div>
+  </div>
+</nav>

@@ -1,0 +1,51 @@
+<script>
+    // (Tip: make these non-reflecting if possible; exported props reflect to attrs a lot)
+    let mouseX = 0;
+    let mouseY = 0;
+  
+    export function onMount(){
+      this.$bindEvent(
+        window,
+        'mousemove',
+        (ev) => ({ mouseX: ev.clientX, mouseY: ev.clientY }),
+        { raf: true, options: { passive: true } }
+      );
+    }
+  </script>
+
+  <div
+    class="custom-cursor"
+    style={`left:${mouseX}px; top:${mouseY}px;`}
+  ></div>
+  
+  <div class="w-full mx-auto max-w-4xl">
+    <scale-nav></scale-nav>
+  </div>
+  <scale-hero light-dom></scale-hero>
+  <scale-highlights light-dom></scale-highlights>
+  
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      /* center the dot under the pointer */
+      transform: translate(-50%, -50%);
+      left: 0; top: 0;
+  
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      background: white;
+      box-shadow: 0 0 20px rgba(255,255,255,0.8);
+  
+      pointer-events: none;   /* don’t block clicks/hover */
+      z-index: 2147483647;    /* stay on top */
+      mix-blend-mode: difference; /* nice effect on dark bg (optional) */
+    }
+  </style>
+  
