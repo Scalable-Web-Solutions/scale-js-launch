@@ -1,5 +1,4 @@
 <script>
-    // (Tip: make these non-reflecting if possible; exported props reflect to attrs a lot)
     let mouseX = 0;
     let mouseY = 0;
   
@@ -21,8 +20,9 @@
   <div class="w-full mx-auto max-w-4xl">
     <scale-nav></scale-nav>
   </div>
-  <scale-hero light-dom></scale-hero>
-  <scale-highlights light-dom></scale-highlights>
+  <scale-hero></scale-hero>
+  <scale-highlights></scale-highlights>
+  <scale-shopify></scale-shopify>
   
   <style>
     * {

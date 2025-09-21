@@ -1,0 +1,1 @@
+import.meta.glob('../compiled/scalejs/**/*.js', {eager: true});
