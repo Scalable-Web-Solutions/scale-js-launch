@@ -21,7 +21,6 @@
     <scale-nav></scale-nav>
   </div>
   <scale-hero></scale-hero>
-  <scale-highlights></scale-highlights>
   <scale-shopify></scale-shopify>
   
   <style>
